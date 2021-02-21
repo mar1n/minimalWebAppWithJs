@@ -6,6 +6,11 @@ function Book(slots) {
 
 Book.instances = {};
 
+Book.convertRow2Obj = function (bookRow) {
+  var book = new Book( bookRow);
+  return book;
+};
+
 Book.add = function (slots) {
   var book = new Book(slots);
   // add book to the collection of Book.instances
@@ -28,7 +33,7 @@ Book.retrieveAll = function () {
     console.log(keys.length + " books loaded.");
     for (let i = 0; i < keys.length; i++) {
       let key = keys[i];
-      Book.instances[key] = Book.convertRec2Obj(books[key]);
+      Book.instances[key] = Book.convertRow2Obj(books[key]);
     }
   }
 };
